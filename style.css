@@ -1,24 +1,43 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
 diff --git a/style.css b/style.css
-index 8b137891791fe96927ad78e64b0aad7bded08bdc..6c01c1c1275918bfb465207fff620a95403e1ea6 100644
+index 8b137891791fe96927ad78e64b0aad7bded08bdc..7655b42700810084d4a998ef7416e547bf137bec 100644
 --- a/style.css
 +++ b/style.css
-@@ -1 +1,111 @@
+@@ -1 +1,143 @@
 +/*
-+  NeoAki - Estilo base
-+  Visual simples, moderno e centralizado
++  NeoAki - Estilo visual
++  Objetivo: aparência moderna de rede social, com foco em legibilidade,
++  centralização de conteúdo e componentes com destaque.
 +*/
  
++/*
++  Fonte externa via Google Fonts (sem alterar HTML).
++  Importante: mantém fallback seguro para ambientes offline.
++*/
++@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
++
 +:root {
-+  --bg: #f5f7fb;
++  /* Paleta clara */
++  --bg: #f4f7fb;
++  --bg-soft: #eef3ff;
 +  --surface: #ffffff;
-+  --text: #1f2937;
++  --text: #111827;
 +  --muted: #6b7280;
++
++  /* Cores de destaque */
 +  --primary: #4f46e5;
 +  --primary-hover: #4338ca;
-+  --border: #e5e7eb;
-+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
++  --secondary: #e8edf7;
++  --secondary-hover: #dde5f2;
++
++  /* Estrutura visual */
++  --border: #e5eaf2;
++  --header-bg: linear-gradient(135deg, #4f46e5 0%, #6366f1 55%, #7c3aed 100%);
++  --shadow-soft: 0 10px 28px rgba(15, 23, 42, 0.08);
++  --shadow-strong: 0 14px 34px rgba(79, 70, 229, 0.22);
 +}
 +
++/* Reset básico */
 +* {
 +  box-sizing: border-box;
 +  margin: 0;
@@ -26,36 +45,42 @@ index 8b137891791fe96927ad78e64b0aad7bded08bdc..6c01c1c1275918bfb465207fff620a95
 +}
 +
 +body {
-+  font-family: Arial, Helvetica, sans-serif;
-+  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 35%);
++  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
 +  color: var(--text);
++  background: radial-gradient(circle at top, var(--bg-soft) 0%, var(--bg) 45%, #f8fafc 100%);
 +  min-height: 100vh;
++
++  /* Centralização global do conteúdo */
 +  display: flex;
 +  justify-content: center;
-+  padding: 24px;
++  align-items: flex-start;
++  padding: 30px 20px;
 +}
 +
++/* Container principal centralizado */
 +.page-container {
 +  width: 100%;
-+  max-width: 900px;
++  max-width: 920px;
 +}
 +
++/* Header com fundo destacado */
 +.main-header {
-+  background-color: var(--surface);
-+  border: 1px solid var(--border);
-+  border-radius: 14px;
-+  box-shadow: var(--shadow);
-+  padding: 18px 20px;
++  background: var(--header-bg);
++  border-radius: 18px;
++  box-shadow: var(--shadow-strong);
++  padding: 22px 24px;
++  margin-bottom: 20px;
++
 +  display: flex;
 +  align-items: center;
 +  justify-content: space-between;
-+  margin-bottom: 18px;
 +}
 +
 +.logo {
-+  font-size: 1.7rem;
-+  letter-spacing: 0.3px;
-+  color: var(--primary);
++  font-size: clamp(1.4rem, 2vw, 1.8rem);
++  font-weight: 800;
++  letter-spacing: 0.4px;
++  color: #ffffff;
 +}
 +
 +.auth-actions {
@@ -63,13 +88,15 @@ index 8b137891791fe96927ad78e64b0aad7bded08bdc..6c01c1c1275918bfb465207fff620a95
 +  gap: 10px;
 +}
 +
++/* Botões modernos: borda arredondada + hover suave */
 +.btn {
 +  border: none;
-+  border-radius: 10px;
-+  padding: 10px 14px;
++  border-radius: 999px;
++  padding: 10px 16px;
++  font-size: 0.94rem;
 +  font-weight: 600;
 +  cursor: pointer;
-+  transition: transform 0.15s ease, opacity 0.2s ease, background-color 0.2s ease;
++  transition: transform 0.18s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 +}
 +
 +.btn:hover {
@@ -81,37 +108,45 @@ index 8b137891791fe96927ad78e64b0aad7bded08bdc..6c01c1c1275918bfb465207fff620a95
 +}
 +
 +.btn-secondary {
-+  background-color: #e5e7eb;
-+  color: #111827;
++  background-color: var(--secondary);
++  color: #1f2937;
 +}
 +
 +.btn-secondary:hover {
-+  opacity: 0.9;
++  background-color: var(--secondary-hover);
++  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
 +}
 +
 +.btn-primary {
-+  background-color: var(--primary);
-+  color: #ffffff;
++  background-color: #ffffff;
++  color: var(--primary);
 +}
 +
 +.btn-primary:hover {
-+  background-color: var(--primary-hover);
++  background-color: #f8f9ff;
++  box-shadow: 0 10px 22px rgba(255, 255, 255, 0.35);
 +}
 +
++/* Área do feed com visual de card moderno */
 +.feed-area {
-+  min-height: 360px;
++  min-height: 400px;
 +  background-color: var(--surface);
-+  border: 1px dashed #cbd5e1;
-+  border-radius: 14px;
-+  box-shadow: var(--shadow);
++  border: 1px solid var(--border);
++  border-radius: 18px;
++  box-shadow: var(--shadow-soft);
++
 +  display: flex;
 +  align-items: center;
 +  justify-content: center;
++
 +  color: var(--muted);
-+  font-size: 0.98rem;
++  font-size: 1rem;
++  font-weight: 500;
 +}
 +
 +.feed-area::before {
 +  content: "Seu feed aparecerá aqui em breve...";
 +}
-
+ 
+EOF
+)
