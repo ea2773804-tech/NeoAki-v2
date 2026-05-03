@@ -1,1 +1,117 @@
+diff --git a/style.css b/style.css
+index 8b137891791fe96927ad78e64b0aad7bded08bdc..6c01c1c1275918bfb465207fff620a95403e1ea6 100644
+--- a/style.css
++++ b/style.css
+@@ -1 +1,111 @@
++/*
++  NeoAki - Estilo base
++  Visual simples, moderno e centralizado
++*/
+ 
++:root {
++  --bg: #f5f7fb;
++  --surface: #ffffff;
++  --text: #1f2937;
++  --muted: #6b7280;
++  --primary: #4f46e5;
++  --primary-hover: #4338ca;
++  --border: #e5e7eb;
++  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
++}
++
++* {
++  box-sizing: border-box;
++  margin: 0;
++  padding: 0;
++}
++
++body {
++  font-family: Arial, Helvetica, sans-serif;
++  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 35%);
++  color: var(--text);
++  min-height: 100vh;
++  display: flex;
++  justify-content: center;
++  padding: 24px;
++}
++
++.page-container {
++  width: 100%;
++  max-width: 900px;
++}
++
++.main-header {
++  background-color: var(--surface);
++  border: 1px solid var(--border);
++  border-radius: 14px;
++  box-shadow: var(--shadow);
++  padding: 18px 20px;
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  margin-bottom: 18px;
++}
++
++.logo {
++  font-size: 1.7rem;
++  letter-spacing: 0.3px;
++  color: var(--primary);
++}
++
++.auth-actions {
++  display: flex;
++  gap: 10px;
++}
++
++.btn {
++  border: none;
++  border-radius: 10px;
++  padding: 10px 14px;
++  font-weight: 600;
++  cursor: pointer;
++  transition: transform 0.15s ease, opacity 0.2s ease, background-color 0.2s ease;
++}
++
++.btn:hover {
++  transform: translateY(-1px);
++}
++
++.btn:active {
++  transform: translateY(0);
++}
++
++.btn-secondary {
++  background-color: #e5e7eb;
++  color: #111827;
++}
++
++.btn-secondary:hover {
++  opacity: 0.9;
++}
++
++.btn-primary {
++  background-color: var(--primary);
++  color: #ffffff;
++}
++
++.btn-primary:hover {
++  background-color: var(--primary-hover);
++}
++
++.feed-area {
++  min-height: 360px;
++  background-color: var(--surface);
++  border: 1px dashed #cbd5e1;
++  border-radius: 14px;
++  box-shadow: var(--shadow);
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  color: var(--muted);
++  font-size: 0.98rem;
++}
++
++.feed-area::before {
++  content: "Seu feed aparecerá aqui em breve...";
++}
 
